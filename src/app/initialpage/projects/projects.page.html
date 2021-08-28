@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title  style="text-align:center;">New Project</ion-title>
+    <ion-icon name="close" slot="end" size="large" class="ion-padding" (click)="close()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-item>
+
+
+  <ion-title>Help us organize your prrojects by filling this form</ion-title>
+
+</ion-item>
+
+<ion-content [fullscreen] = "true">
+  <form #f="ngForm" novalidate (ngSubmit)="onSubmit(f)">
+    <ion-title color="success"> Every project has a great name!</ion-title>
+    <ion-item lines="full">
+      <ion-label position="floating">project title</ion-label>
+      <ion-input type="text" required placeholder="start with a title" name ="ptitle" [(ngModel)]="data.projecttitle" #ptitleCtrl="ngModel" projecttitle></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!ptitleCtrl.valid && ptitleCtrl.touched">
+      <ion-text color="danger">project title is required</ion-text>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">projet description</ion-label>
+      <ion-input type="text" required placeholder="about.." name ="pdescrip" [(ngModel)]="data.projectdescription" #pdescripCtrl="ngModel" projectdescription></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!pdescripCtrl.valid && pdescripCtrl.touched">
+      <ion-text color="danger">projectdescription is required</ion-text>
+    </ion-item>
+
+
+
+    <ion-row>
+      <a target="_blank"  href="/initialpage">
+        <ion-button type="submit" color="danger" expand="block" [disabled]="!f.form.valid" (click)="goToAboutPage()">Add</ion-button></a>
+        <!--ion-button class="btn btn-secondary" type="reset" expand="block">Reset</ion-button!-->
+    </ion-row>
+  </form>
+  <!--ion-button href="/eventinfo"></ion-button!-->
+  <!--ion-button (click)="go()">go</ion-button!-->
+</ion-content>

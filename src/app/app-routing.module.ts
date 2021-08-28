@@ -11,6 +11,23 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'initialpage',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./initialpage/initialpage.module').then( m => m.InitialpagePageModule)
+      },
+    {
+      path: ':initialId',
+      loadChildren: () => import('./initialpage/initial-detail/initial-detail.module').then( m => m.InitialDetailPageModule)
+    }
+    ]
+  },
+  {
+    path: 'projects',
+    loadChildren: () => import('./initialpage/projects/projects.module').then( m => m.ProjectsPageModule)
+  },
 ];
 
 @NgModule({

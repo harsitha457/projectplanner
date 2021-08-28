@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color ="dark">
+    <ion-title>PROJECTS</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor= " let n of initialservice"
+    [routerLink] = "['/initialpage', n.id]">
+    <ion-avatar slot = "start">
+      <ion-img [src] = "n.imageUrl"></ion-img>
+    </ion-avatar>
+    <ion-label> {{n.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-card >
+    <ion-card-header >
+      <ion-card-title>project:{{name}}</ion-card-title>
+
+      <ion-card-content>description:{{descrip}}</ion-card-content>
+    </ion-card-header>
+  </ion-card>
+  <ion-button round (click)="goAnOtherPage()" > Add Project</ion-button>
+  </ion-content>
